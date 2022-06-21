@@ -21,7 +21,7 @@ class crudController extends Controller
         $productos->tipo = $request->tipo;
         $productos->descripcion = $request->descripcion;
         $productos->save();
-        
+        return redirect()->route('crud.show',$productos);
     }
 
     public function show(){
@@ -32,7 +32,22 @@ class crudController extends Controller
     public function unico($id){
         $productos = producto::find($id);
         return view('unico',compact('productos'));
-        
     }
 
+    public function edit(producto $productos){
+        return view('editar', compact('productos'));
+    }
+    
+    public function update(Request $request, producto $productos){
+        $productos->name = $request->name;
+        $productos->tipo = $request->tipo;
+        $productos->descripcion = $request->descripcion;
+        $productos->save();
+        return redirect()->route('crud.unico',$productos);
+    }
+
+    public function destroy(producto $productos){
+        $productos->delete();
+        return redirect()->route('crud.show',$productos);
+    }
 };

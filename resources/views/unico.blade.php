@@ -8,7 +8,7 @@
       <ul>
         <li><a href="{{ route('crud') }}">Inicio</a></li>
         <li><a href="{{ route('crud.create') }}">Crear Productos</a></li>
-        <li><a href="{{ route('crud.show') }}"></a>Productos</li>
+        <li><a href="{{ route('crud.show') }}">Productos</a></li>
       </ul>
     </nav>
   </header>
@@ -20,7 +20,13 @@
     <h2 class="descripcion">Descripcion: {{ $productos ->descripcion}}</h2>
   </div>
 
-  <p><a href="" class="edit">Editar producto</a></p>
+  <p><a href="{{ route('crud.edit' , $productos->id) }}" class="edit">Editar producto</a></p>
+  <form action="{{ route('crud.destroy' , $productos) }}" method="post">
+    @csrf
+    @method('delete')
+    <button>Eliminar producto</button>
+  </form>
+  
 
   
 

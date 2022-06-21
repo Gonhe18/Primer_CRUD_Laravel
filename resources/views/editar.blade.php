@@ -14,22 +14,23 @@
     </nav>
   </header>
 
-  <form action="{{ route('crud.store') }}" method="post">
+  <form action="{{ route('crud.update',$productos) }}" method="post">
     @csrf
-    <h1>Ingrese un producto a la base de datos</h1>
+    @method('put')
+    <h1>Editar producto: {{ $productos->name }}</h1>
     <label for="">Nombre del producto
-      <input type="text" name='name'>
+      <input type="text" name='name' value="{{ $productos->name }}"
     </label>
     <br><br>
     <label for="">Tipo del producto
-      <input type="text" name='tipo'>
+      <input type="text" name='tipo' value="{{$productos->tipo }}"
     </label>
     <br><br>
     <label for="">Descripción del producto
-      <textarea name="descripcion"type="text"></textarea>
+      <textarea name="descripcion"type="text">{{ $productos->descripcion }}</textarea>
     </label>
     <br><br>
-    <button>Ingresar producto</button>
+    <button>Editar producto</button>
   </form>
 
 @endsection

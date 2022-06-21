@@ -19,3 +19,6 @@ Route::get('crud/crear', [crudController::class,'create'])->name('crud.create');
 Route::post('crud/crear/{productos?}', [crudController::class,'store'])->name('crud.store');
 Route::get('/crud/productos',[crudController::class,'show'])->name('crud.show');
 Route::get('/crud/productos/{id?}',[crudController::class,'unico'])->name('crud.unico');
+Route::get('/crud/productos/edit/{productos}',[crudController::class,'edit'])->name('crud.edit');
+Route::put('/crud/productos/edit/update/{productos}',[crudController::class,'update'])->name('crud.update');
+Route::delete('/crud/productos/edit/delete/{productos}',[crudController::class,'destroy'])->name('crud.destroy');
